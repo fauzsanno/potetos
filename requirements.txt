@@ -1,9 +1,9 @@
+tensorflow==2.15.0
+tensorflow-serving-api==2.15.0
 fastapi==0.115.4
-numpy==1.24.4              # Kompatibel dengan TensorFlow 2.12–2.13 dan Python 3.10
-pillow==10.4.0
-tensorboard==2.13.0        # Sesuaikan dengan versi TensorFlow
-tensorboard-data-server==0.7.1  # Kompatibel dengan tensorboard 2.13.0
-tensorflow==2.13.0         # Versi stabil & kompatibel dengan Python 3.10
-tensorflow-serving-api==2.13.0  # Sesuai dengan versi TensorFlow
 uvicorn==0.32.0
 python-multipart==0.0.17
+pillow==10.4.0
+numpy==1.26.4
+tensorboard==2.15.1
+tensorboard-data-server==0.7.2
