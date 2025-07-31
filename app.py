@@ -7,11 +7,23 @@ import os
 # --- Load model terbaru ---
 def load_model():
     model_dir = "./models"
-    versions = [int(v) for v in os.listdir(model_dir) if v.isdigit()]
+    
+    if not os.path.exists(model_dir):
+        raise FileNotFoundError("Folder './models' tidak ditemukan.")
+
+    # Ambil file yang berformat .h5 dan awalan angka
+    versions = [int(f.split(".")[0]) for f in os.listdir(model_dir) if f.endswith(".h5") and f.split(".")[0].isdigit()]
+    
+    if not versions:
+        raise FileNotFoundError("Tidak ada file model '.h5' dalam folder './models'. Contoh: './models/1.h5'")
+
     latest_version = str(max(versions))
     model_path = os.path.join(model_dir, latest_version + ".h5")
-    model = tf.keras.models.load_model(model_path)
-    return model
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"File model tidak ditemukan di path: {model_path}")
+
+    return tf.keras.models.load_model(model_path)
 
 # --- Fungsi prediksi ---
 def predict(model, image, class_names, image_size=(256, 256)):
